@@ -1,0 +1,57 @@
+<%= form_with(model: historial_reproduccion, class: "container mt-4") do |form| %>
+  <% if historial_reproduccion.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(historial_reproduccion.errors.count, "error") %> impidieron guardar este registro:</h5>
+      <ul class="mb-0">
+        <% historial_reproduccion.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :usuario_id, "Usuario", class: "form-label" %>
+    <%= form.collection_select :usuario_id, Usuario.where(activo: true), :id, :nombre, { include_blank: "Seleccioná un usuario" }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :perfil_id, "Perfil", class: "form-label" %>
+    <%= form.select :perfil_id,
+        grouped_options_for_select(
+          Usuario.where(activo: true).map { |u| [u.nombre, u.perfiles.map { |p| [p.nombre_perfil, p.perfil_id] }] }
+        ),
+        { include_blank: "Seleccioná un perfil" },
+        class: "form-select" %>
+    <small class="text-muted">Los perfiles están agrupados por usuario. Elegí el que corresponda al usuario seleccionado arriba.</small>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :contenido_id, "Contenido", class: "form-label" %>
+    <%= form.collection_select :contenido_id, Catalogo.where(disponible: true), :id, :titulo, { include_blank: "Seleccioná un contenido" }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :episodio_id, "ID de episodio", class: "form-label" %>
+    <%= form.text_field :episodio_id, class: "form-control", placeholder: "Solo si el contenido es una Serie" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :segundo_detenido, "Segundo detenido", class: "form-label" %>
+    <%= form.number_field :segundo_detenido, class: "form-control" %>
+  </div>
+
+  <div class="form-check mb-3">
+    <%= form.check_box :visto_completo, class: "form-check-input" %>
+    <%= form.label :visto_completo, "Visto completo", class: "form-check-label" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :ultima_conexion, "Última conexión", class: "form-label" %>
+    <%= form.datetime_field :ultima_conexion, class: "form-control" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

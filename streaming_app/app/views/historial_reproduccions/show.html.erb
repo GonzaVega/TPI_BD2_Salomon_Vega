@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @historial_reproduccion %>
+
+<div>
+  <%= link_to "Edit this historial reproduccion", edit_historial_reproduccion_path(@historial_reproduccion) %> |
+  <%= link_to "Back to historial reproduccions", historial_reproduccions_path %>
+
+  <%= button_to "Destroy this historial reproduccion", @historial_reproduccion, method: :delete %>
+</div>

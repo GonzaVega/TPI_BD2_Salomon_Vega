@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  perfil_id: 1
+  episodio_id: MyString
+  segundo_detenido: 1
+  visto_completo: false
+  ultima_conexion: 2026-06-20 16:41:29
+
+two:
+  perfil_id: 1
+  episodio_id: MyString
+  segundo_detenido: 1
+  visto_completo: false
+  ultima_conexion: 2026-06-20 16:41:29

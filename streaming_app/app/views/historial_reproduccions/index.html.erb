@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Historial reproduccions" %>
+
+<h1>Historial reproduccions</h1>
+
+<div id="historial_reproduccions">
+  <% @historial_reproduccions.each do |historial_reproduccion| %>
+    <%= render historial_reproduccion %>
+    <p>
+      <%= link_to "Show this historial reproduccion", historial_reproduccion %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New historial reproduccion", new_historial_reproduccion_path %>

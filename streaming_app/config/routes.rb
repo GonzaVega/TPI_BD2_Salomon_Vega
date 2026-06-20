@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :historial_reproduccions
   resources :catalogos
   resources :actors
   resources :usuarios
