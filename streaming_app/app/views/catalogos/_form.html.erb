@@ -1,0 +1,108 @@
+<%= form_with(model: catalogo, class: "container mt-4") do |form| %>
+  <% if catalogo.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(catalogo.errors.count, "error") %> impidieron guardar este catálogo:</h5>
+      <ul class="mb-0">
+        <% catalogo.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :titulo, class: "form-label" %>
+    <%= form.text_field :titulo, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :tipo, class: "form-label" %>
+    <%= form.select :tipo, ["Pelicula", "Serie"], { include_blank: "Seleccioná un tipo" }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :sinopsis, class: "form-label" %>
+    <%= form.text_area :sinopsis, class: "form-control", rows: 3 %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :clasificacion, "Clasificación", class: "form-label" %>
+    <%= form.select :clasificacion, ["G", "PG", "PG-13", "PG-16", "R", "NC-17", "TV-MA"], { include_blank: "Seleccioná una clasificación" }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :lanzamiento, "Año de lanzamiento", class: "form-label" %>
+    <%= form.number_field :lanzamiento, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :generos_string, "Géneros (separados por coma)", class: "form-label" %>
+    <%= form.text_field :generos_string, class: "form-control", placeholder: "Ej: Drama, Terror, Ciencia Ficción" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :actor_ids, "Actores", class: "form-label" %>
+    <%= form.collection_select :actor_ids, Actor.where(activo: true), :id, :nombre, { include_blank: false }, { multiple: true, class: "form-select", size: 5 } %>
+    <small class="text-muted">Mantené Ctrl (o Cmd) presionado para seleccionar varios.</small>
+  </div>
+
+  <div class="form-check mb-4">
+    <%= form.check_box :disponible, class: "form-check-input" %>
+    <%= form.label :disponible, "Disponible", class: "form-check-label" %>
+  </div>
+
+  <hr>
+  <h5>Temporadas <small class="text-muted">(solo si el tipo es "Serie")</small></h5>
+
+  <%= form.fields_for :temporadas do |temporada_form| %>
+    <div class="card mb-3 p-3">
+      <div class="row">
+        <div class="col-md-3 mb-2">
+          <%= temporada_form.label :numero_temporada, "N° de temporada", class: "form-label" %>
+          <%= temporada_form.number_field :numero_temporada, class: "form-control" %>
+        </div>
+        <div class="col-md-3 mb-2">
+          <%= temporada_form.label :lanzamiento, "Año", class: "form-label" %>
+          <%= temporada_form.number_field :lanzamiento, class: "form-control" %>
+        </div>
+      </div>
+
+      <% if temporada_form.object.persisted? %>
+        <div class="form-check mb-2">
+          <%= temporada_form.check_box :_destroy, class: "form-check-input" %>
+          <%= temporada_form.label :_destroy, "Eliminar esta temporada", class: "form-check-label text-danger" %>
+        </div>
+      <% end %>
+
+      <h6>Episodios <small class="text-muted">(mínimo 2)</small></h6>
+      <%= temporada_form.fields_for :episodios do |episodio_form| %>
+        <div class="border rounded p-2 mb-2">
+          <div class="row">
+            <div class="col-md-3 mb-2">
+              <%= episodio_form.label :episodio_id, "ID episodio", class: "form-label" %>
+              <%= episodio_form.text_field :episodio_id, class: "form-control", placeholder: "EP-101" %>
+            </div>
+            <div class="col-md-6 mb-2">
+              <%= episodio_form.label :titulo_episodio, "Título", class: "form-label" %>
+              <%= episodio_form.text_field :titulo_episodio, class: "form-control" %>
+            </div>
+            <div class="col-md-3 mb-2">
+              <%= episodio_form.label :duracion_segundos, "Duración (seg)", class: "form-label" %>
+              <%= episodio_form.number_field :duracion_segundos, class: "form-control" %>
+            </div>
+          </div>
+          <% if episodio_form.object.persisted? %>
+            <div class="form-check">
+              <%= episodio_form.check_box :_destroy, class: "form-check-input" %>
+              <%= episodio_form.label :_destroy, "Eliminar este episodio", class: "form-check-label text-danger" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

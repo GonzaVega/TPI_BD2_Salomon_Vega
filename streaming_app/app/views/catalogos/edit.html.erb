@@ -1,0 +1,12 @@
+<% content_for :title, "Editing catalogo" %>
+
+<h1>Editing catalogo</h1>
+
+<%= render "form", catalogo: @catalogo %>
+
+<br>
+
+<div>
+  <%= link_to "Show this catalogo", @catalogo %> |
+  <%= link_to "Back to catalogos", catalogos_path %>
+</div>

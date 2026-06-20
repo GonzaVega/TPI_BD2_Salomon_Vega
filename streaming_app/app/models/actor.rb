@@ -2,6 +2,7 @@ class Actor
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_and_belongs_to_many :catalogos, class_name: "Catalogo", inverse_of: :actores
   store_in collection: "actores"
 
   field :nombre, type: String
