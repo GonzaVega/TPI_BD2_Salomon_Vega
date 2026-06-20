@@ -1,0 +1,36 @@
+<%= form_with(model: actor, class: "container mt-4") do |form| %>
+  <% if actor.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(actor.errors.count, "error") %> impidieron guardar este actor:</h5>
+      <ul class="mb-0">
+        <% actor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :nacionalidad, class: "form-label" %>
+    <%= form.text_field :nacionalidad, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :fecha_nacimiento, "Fecha de nacimiento", class: "form-label" %>
+    <%= form.date_field :fecha_nacimiento, class: "form-control" %>
+  </div>
+
+  <div class="form-check mb-3">
+    <%= form.check_box :activo, class: "form-check-input" %>
+    <%= form.label :activo, "Activo", class: "form-check-label" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

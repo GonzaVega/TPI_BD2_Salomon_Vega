@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  nacionalidad: MyString
+  fecha_nacimiento: 2026-06-20
+  activo: false
+
+two:
+  nombre: MyString
+  nacionalidad: MyString
+  fecha_nacimiento: 2026-06-20
+  activo: false
