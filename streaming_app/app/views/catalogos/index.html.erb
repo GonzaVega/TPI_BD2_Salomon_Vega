@@ -1,16 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-info"><%= notice %></div>
+<% end %>
 
-<% content_for :title, "Catalogos" %>
+<% content_for :title, "Contenido" %>
 
-<h1>Catalogos</h1>
+<h1 class="mb-4">Contenido</h1>
 
-<div id="catalogos">
+<div id="catalogos" class="row">
   <% @catalogos.each do |catalogo| %>
-    <%= render catalogo %>
-    <p>
-      <%= link_to "Show this catalogo", catalogo %>
-    </p>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <%= render catalogo %>
+          <%= link_to "Ver contenido", catalogo, class: "btn btn-sm btn-outline-primary mt-auto align-self-start" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New catalogo", new_catalogo_path %>
+<%= link_to "Nuevo contenido", new_catalogo_path, class: "btn btn-primary" %>

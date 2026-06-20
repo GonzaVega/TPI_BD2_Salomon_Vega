@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "pages#home"
   resources :historial_reproduccions
   resources :catalogos
   resources :actors

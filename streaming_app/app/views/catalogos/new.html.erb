@@ -1,11 +1,14 @@
-<% content_for :title, "New catalogo" %>
+<% content_for :title, "Nuevo contenido" %>
 
-<h1>New catalogo</h1>
+<div class="card">
+  <div class="card-header">
+    <h1 class="h3 mb-0">Nuevo contenido</h1>
+  </div>
+  <div class="card-body">
+    <%= render "form", catalogo: @catalogo %>
+  </div>
+</div>
 
-<%= render "form", catalogo: @catalogo %>
-
-<br>
-
-<div>
-  <%= link_to "Back to catalogos", catalogos_path %>
+<div class="mt-3">
+  <%= link_to "Volver al catálogo", catalogos_path, class: "btn btn-outline-secondary" %>
 </div>

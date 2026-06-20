@@ -1,27 +1,8 @@
+<% perfil = historial_reproduccion.usuario&.perfiles&.find { |p| p.perfil_id == historial_reproduccion.perfil_id } %>
 <div id="<%= dom_id historial_reproduccion %>">
-  <p>
-    <strong>Perfil:</strong>
-    <%= historial_reproduccion.perfil_id %>
-  </p>
-
-  <p>
-    <strong>Episodio:</strong>
-    <%= historial_reproduccion.episodio_id %>
-  </p>
-
-  <p>
-    <strong>Segundo detenido:</strong>
-    <%= historial_reproduccion.segundo_detenido %>
-  </p>
-
-  <p>
-    <strong>Visto completo:</strong>
-    <%= historial_reproduccion.visto_completo %>
-  </p>
-
-  <p>
-    <strong>Ultima conexion:</strong>
-    <%= historial_reproduccion.ultima_conexion %>
-  </p>
-
+  <p class="mb-1"><strong>Perfil:</strong> <strong><%= perfil&.nombre_perfil %></strong> (usuario: <%= historial_reproduccion.usuario&.nombre %>)</p>
+  <p class="mb-1"><strong>Contenido:</strong> <%= historial_reproduccion.contenido&.titulo %></p>
+  <p class="mb-1"><strong>Segundo detenido:</strong> <%= historial_reproduccion.segundo_detenido %></p>
+  <p class="mb-1"><strong>Visto completo:</strong> <%= historial_reproduccion.visto_completo %></p>
+  <p class="mb-0"><strong>Última conexión:</strong> <%= historial_reproduccion.ultima_conexion %></p>
 </div>

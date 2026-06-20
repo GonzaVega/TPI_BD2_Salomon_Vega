@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #121212;
+  min-height: 100vh;
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card .card-header {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.alert {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

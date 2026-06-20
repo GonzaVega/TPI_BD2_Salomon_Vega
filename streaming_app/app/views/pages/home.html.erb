@@ -1,0 +1,29 @@
+<% content_for :title, "Inicio" %>
+
+<div class="text-center py-5">
+  <h1 class="display-4 mb-4">Bienvenido a Streaming App</h1>
+  <p class="lead mb-4">
+    Aplicación de gestión de contenido multimedia desarrollada para el Trabajo Práctico
+    de Bases de Datos II. Administrá usuarios, actores, catálogo de contenido y
+    registros de reproducción.
+  </p>
+  <hr class="my-4">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <%= link_to "Gestionar Usuarios", usuarios_path, class: "btn btn-primary w-100 py-3" %>
+        </div>
+        <div class="col-sm-6">
+          <%= link_to "Gestionar Actores", actors_path, class: "btn btn-primary w-100 py-3" %>
+        </div>
+        <div class="col-sm-6">
+          <%= link_to "Explorar Contenido", catalogos_path, class: "btn btn-primary w-100 py-3" %>
+        </div>
+        <div class="col-sm-6">
+          <%= link_to "Historial de Reproducción", historial_reproduccions_path, class: "btn btn-primary w-100 py-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

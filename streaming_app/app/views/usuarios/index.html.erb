@@ -1,16 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-info"><%= notice %></div>
+<% end %>
 
 <% content_for :title, "Usuarios" %>
 
-<h1>Usuarios</h1>
+<h1 class="mb-4">Usuarios</h1>
 
-<div id="usuarios">
+<div id="usuarios" class="row">
   <% @usuarios.each do |usuario| %>
-    <%= render usuario %>
-    <p>
-      <%= link_to "Show this usuario", usuario %>
-    </p>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <%= render usuario %>
+          <%= link_to "Ver usuario", usuario, class: "btn btn-sm btn-outline-primary mt-auto align-self-start" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New usuario", new_usuario_path %>
+<%= link_to "Nuevo usuario", new_usuario_path, class: "btn btn-primary" %>

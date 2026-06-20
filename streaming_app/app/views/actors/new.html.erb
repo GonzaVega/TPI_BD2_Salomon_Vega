@@ -1,11 +1,14 @@
-<% content_for :title, "New actor" %>
+<% content_for :title, "Nuevo actor" %>
 
-<h1>New actor</h1>
+<div class="card">
+  <div class="card-header">
+    <h1 class="h3 mb-0">Nuevo actor</h1>
+  </div>
+  <div class="card-body">
+    <%= render "form", actor: @actor %>
+  </div>
+</div>
 
-<%= render "form", actor: @actor %>
-
-<br>
-
-<div>
-  <%= link_to "Back to actors", actors_path %>
+<div class="mt-3">
+  <%= link_to "Volver a actores", actors_path, class: "btn btn-outline-secondary" %>
 </div>

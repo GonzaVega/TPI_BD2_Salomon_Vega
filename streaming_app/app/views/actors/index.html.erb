@@ -1,16 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-info"><%= notice %></div>
+<% end %>
 
-<% content_for :title, "Actors" %>
+<% content_for :title, "Actores" %>
 
-<h1>Actors</h1>
+<h1 class="mb-4">Actores</h1>
 
-<div id="actors">
+<div id="actors" class="row">
   <% @actors.each do |actor| %>
-    <%= render actor %>
-    <p>
-      <%= link_to "Show this actor", actor %>
-    </p>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <%= render actor %>
+          <%= link_to "Ver actor", actor, class: "btn btn-sm btn-outline-primary mt-auto align-self-start" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New actor", new_actor_path %>
+<%= link_to "Nuevo actor", new_actor_path, class: "btn btn-primary" %>

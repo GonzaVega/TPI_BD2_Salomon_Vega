@@ -1,22 +1,6 @@
 <div id="<%= dom_id usuario %>">
-  <p>
-    <strong>Nombre:</strong>
-    <%= usuario.nombre %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= usuario.email %>
-  </p>
-
-  <p>
-    <strong>Plan suscripcion:</strong>
-    <%= usuario.plan_suscripcion %>
-  </p>
-
-  <p>
-    <strong>Activo:</strong>
-    <%= usuario.activo %>
-  </p>
-
+  <p class="mb-1"><strong>Nombre:</strong> <%= usuario.nombre %></p>
+  <p class="mb-1"><strong>Email:</strong> <%= usuario.email %></p>
+  <p class="mb-1"><strong>Plan de suscripción:</strong> <%= usuario.plan_suscripcion %></p>
+  <p class="mb-0"><strong>Activo:</strong> <%= usuario.activo %></p>
 </div>

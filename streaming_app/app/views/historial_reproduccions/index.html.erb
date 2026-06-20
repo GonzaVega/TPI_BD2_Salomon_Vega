@@ -1,16 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-info"><%= notice %></div>
+<% end %>
 
-<% content_for :title, "Historial reproduccions" %>
+<% content_for :title, "Historial de Reproducción" %>
 
-<h1>Historial reproduccions</h1>
+<h1 class="mb-4">Historial de Reproducción</h1>
 
-<div id="historial_reproduccions">
-  <% @historial_reproduccions.each do |historial_reproduccion| %>
-    <%= render historial_reproduccion %>
-    <p>
-      <%= link_to "Show this historial reproduccion", historial_reproduccion %>
-    </p>
+<div id="historial_reproduccions" class="row">
+  <% @historial_reproduccions.each do |historial| %>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <%= render historial %>
+          <%= link_to "Ver registro", historial, class: "btn btn-sm btn-outline-primary mt-auto align-self-start" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New historial reproduccion", new_historial_reproduccion_path %>
+<%= link_to "Nuevo registro", new_historial_reproduccion_path, class: "btn btn-primary" %>
