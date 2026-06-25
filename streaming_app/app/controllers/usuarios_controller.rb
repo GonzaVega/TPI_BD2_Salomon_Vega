@@ -49,7 +49,6 @@ class UsuariosController < ApplicationController
   end
 
   # DELETE /usuarios/1 or /usuarios/1.json
-  # Baja lógica: no se borra el documento, solo se marca como inactivo.
   def destroy
     @usuario.update(activo: false)
 
@@ -60,12 +59,10 @@ class UsuariosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_usuario
       @usuario = Usuario.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def usuario_params
       params.require(:usuario).permit(
         :nombre, :email, :plan_suscripcion, :activo,

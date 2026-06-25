@@ -50,7 +50,6 @@ class CatalogosController < ApplicationController
   end
 
   # DELETE /catalogos/1 or /catalogos/1.json
-  # Baja lógica: no se borra el documento, solo se marca como no disponible.
   def destroy
     @catalogo.update(disponible: false)
 
@@ -61,12 +60,10 @@ class CatalogosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_catalogo
       @catalogo = Catalogo.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def catalogo_params
       params.require(:catalogo).permit(
         :titulo, :tipo, :sinopsis, :clasificacion, :disponible, :lanzamiento,

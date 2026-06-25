@@ -66,12 +66,10 @@ class HistorialReproduccionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_historial_reproduccion
       @historial_reproduccion = HistorialReproduccion.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def historial_reproduccion_params
       params.require(:historial_reproduccion).permit(
         :perfil_id, :episodio_id, :segundo_detenido, :visto_completo, :ultima_conexion,

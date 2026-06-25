@@ -48,7 +48,6 @@ class ActorsController < ApplicationController
   end
 
   # DELETE /actors/1 or /actors/1.json
-  # Baja lógica: no se borra el documento, solo se marca como inactivo.
   def destroy
     @actor.update(activo: false)
 
@@ -59,12 +58,10 @@ class ActorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_actor
       @actor = Actor.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def actor_params
       params.require(:actor).permit(:nombre, :nacionalidad, :fecha_nacimiento, :activo)
     end
